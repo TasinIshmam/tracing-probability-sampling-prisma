@@ -2,7 +2,7 @@
 
 ### Installation
 
-1. Clone this branch: `git clone -b tracing-end git@github.com:TasinIshmam/tracing-tutorial-prisma.git`.
+1. Clone this repo.
 2. Install dependencies: `npm install`.
 3. Run migrations: `npx prisma migrate dev`.
 4. Start jaeger: `docker-compose up -d`
