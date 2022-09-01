@@ -1,6 +1,6 @@
 import { Resource } from "@opentelemetry/resources";
 import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { SimpleSpanProcessor, BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
+import { SimpleSpanProcessor, BatchSpanProcessor, ConsoleSpanExporter, TraceIdRatioBasedSampler, ParentBasedSampler } from "@opentelemetry/sdk-trace-base";
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 import { trace, Tracer } from "@opentelemetry/api";
 import { JaegerExporter } from "@opentelemetry/exporter-jaeger";
@@ -8,11 +8,10 @@ import { registerInstrumentations } from "@opentelemetry/instrumentation";
 import { PrismaInstrumentation } from '@prisma/instrumentation';
 import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
-import { TraceIdRatioBasedSampler, ParentBasedSampler } from '@opentelemetry/core'
 
 export default function initializeTracing(serviceName: string): Tracer {
 
-    const traceRatio = 0.5;
+    const traceRatio = 0.3;
 
     const provider = new NodeTracerProvider({
         // sampler: new ParentBasedSampler({
